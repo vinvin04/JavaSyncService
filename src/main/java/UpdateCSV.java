@@ -13,14 +13,13 @@ public class UpdateCSV {
     String deviceType = "Mobile";
 
     public static void main(String[] args) throws IOException {
-        String fileName = "AssignmentSheet.csv";
-        String filePath = "src/test/resources/";
+        String file = args[0];
         UpdateCSV updateCSV = new UpdateCSV();
-        updateCSV.addRecordsToCSV(fileName, filePath);
+        updateCSV.addRecordsToCSV(file);
     }
 
-    private void addRecordsToCSV(String fileName, String filePath) throws IOException {
-        FileWriter csvWriter = new FileWriter(filePath+fileName,true);
+    private void addRecordsToCSV(String file) throws IOException {
+        FileWriter csvWriter = new FileWriter(file,true);
         Random random = new Random();
         int randomNumber = random.nextInt(20);
         System.out.println(randomNumber);
