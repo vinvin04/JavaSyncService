@@ -14,13 +14,12 @@ There are two application as part of this project
  
  run maven install command
  ```bash
- mvn clean install
+ mvn clean compile assembly:single
  ```
  this will generate the executable jar file.
  
- Database Setup
+ Database Setup:
  
- This service used mysql-connector-java-8.0.19. download the jdbc driver jar and set the CLASSPATH.
  Create Table Statement
  ```sql
  create table database_name.records 
@@ -31,14 +30,19 @@ There are two application as part of this project
 );
  ```
  
+ Instuctions for running services:
+ ---------------------------------
+ 
+ CSVSyncService\target\CSVSyncService-1.0-SNAPSHOT.jar is already part of this git repo in target folder. 
+ 
  Run CSVSync.java
  ```bash
- java -cp Jarpath/CSVSyncService-1.0-SNAPSHOT.jar CSVSync jdbc:mysql://hostname:port_number/database_name db_username db_password csv_file_path
+ java -cp {project_path}\CSVSyncService\target\CSVSyncService-1.0-SNAPSHOT.jar CSVSync jdbc:mysql://hostname:port_number/database_name db_username db_password csv_file_path
  ```
  
  Run UpdateCSV.java
  ```bash
- java -cp Jarpath/CSVSyncService-1.0-SNAPSHOT.jar UpdateCSV csv_file_path
+ java -cp {project_path}\CSVSyncService\target\CSVSyncService-1.0-SNAPSHOT.jar UpdateCSV csv_file_path
  ```
  
- 
+ DONE!
