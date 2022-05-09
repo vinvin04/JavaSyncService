@@ -24,11 +24,9 @@ public class DatabaseConnection {
     }
 
     public  static void init(String url1, String username1, String password1) {
-        System.out.println("in db singleton" +url + " "+username + " "+ password);
         url = url1;
         username = username1;
         password = password1;
-        System.out.println("in db singleton" + url + " "+username + " "+ password);
     }
 
     public static DatabaseConnection getInstance() throws SQLException, ClassNotFoundException {

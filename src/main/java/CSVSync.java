@@ -16,9 +16,7 @@ class Task implements Runnable {
     private static final String COMMA_DELIMITER = ",";
 
     public void run() {
-        System.out.println(
-                "Number " + " Current time : "
-                        + java.time.LocalDateTime.now());
+        System.out.println(" Current time : " + java.time.LocalDateTime.now());
         readCSV(CSVSync.file);
     }
 
@@ -30,12 +28,14 @@ class Task implements Runnable {
                 String[] values = line.split(COMMA_DELIMITER);
                 records.add(Arrays.asList(values));
             }
-            System.out.println("count of records " + records.size());
+            System.out.println("count of records in csv file " + records.size());
             int count = records.size();
             int countInDatabase = getCountFromDatabase();
             System.out.println("count of records in DB " + countInDatabase);
             if (count > countInDatabase)
                 updateRecords(records, count, countInDatabase);
+            else
+                System.out.println("csv and database are in sync");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -107,18 +107,12 @@ public class CSVSync {
 
         file = args[3];
         System.out.println(file);
-//        file = "src/test/resources/AssignmentSheet.csv";
 
         final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
         System.out.println("Current time : " + java.time.LocalDateTime.now());
 
         // Scheduling the tasks
-        scheduler.scheduleAtFixedRate(new Task(), 0, 1, TimeUnit.MINUTES);
-
-        // remember to shutdown the scheduler
-        // so that it no longer accepts
-        // any new tasks
-        // scheduler.shutdown();
+        scheduler.scheduleAtFixedRate(new Task(), 0, 2, TimeUnit.MINUTES);
     }
 }
