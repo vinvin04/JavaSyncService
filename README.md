@@ -23,7 +23,12 @@ There are two application as part of this project
  This service used mysql-connector-java-8.0.19. download the jdbc driver jar and set the CLASSPATH.
  Create Table Statement
  ```sql
- 
+ create table database_name.records 
+(
+	timestamp varchar(20),ver varchar(20), product_family varchar(20), country varchar(20), device_type varchar(20),
+	os varchar(20), checkout_failure_count double(8,4), payment_api_failure_count double(8,4), purchase_count double(9,4), 
+    revenue double(9,4)
+);
  ```
  
  Run CSVSync.java
